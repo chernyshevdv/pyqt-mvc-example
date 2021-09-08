@@ -6,9 +6,8 @@
 from table_ui import Ui_MainWindow
 from PyQt5 import QtCore, QtGui, QtSql, Qt
 from PyQt5 import QtWidgets
-import table_ui
 
-class MainWindow(QtWidgets.QMainWindow, table_ui.Ui_MainWindow):
+class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
@@ -98,7 +97,7 @@ class TaskModel(QtSql.QSqlQueryModel):
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
     db = QtSql.QSqlDatabase().addDatabase('QSQLITE')
-    db.setDatabaseName('pyqt.sqlite')
+    db.setDatabaseName('tasks.sqlite')
     db.open()
     window = MainWindow()
     window.show()
